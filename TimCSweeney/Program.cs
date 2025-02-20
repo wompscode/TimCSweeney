@@ -19,7 +19,7 @@ internal static class Program
         {
             Pattern =
                 "/\\bepic\\b|\\bunreal\\b|\\btilted\\b|\\bfortnite\\b|sween|\\bswinny\\b|\\bfort\\b|\\bnite\\b|jenkin|\\bjames\\b|\\beric\\b|\\bswussy\\b|\\btim\\b|\\btimato\\b|\\bfirtnite\\b/ig",
-            Emote = "",
+            Emote = "<:sweeney:1121233335922999363>",
             CustomEmoji = true
         },
         new()
@@ -63,7 +63,7 @@ internal static class Program
 
         var token = await File.ReadAllTextAsync("token");
 
-        await _client.LoginAsync(TokenType.Bot, token);
+        await _client.LoginAsync(TokenType.Bot, token.Trim());
         await _client.StartAsync();
 
         await Task.Delay(-1);
