@@ -121,7 +121,6 @@ internal static class Program
         {
             Regex regex = _.Pattern;
             bool matched = false;
-            Console.WriteLine(regex.ToString());
             if (regex.IsMatch(arg.Content))
             {
                 Console.WriteLine($"RegEx: Matched \"{arg.Content}\" with {_.Pattern}");
