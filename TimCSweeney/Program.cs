@@ -1,4 +1,5 @@
-﻿using static TimCSweeney.Structs;
+﻿using System.Diagnostics;
+using static TimCSweeney.Structs;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using Discord;
@@ -17,20 +18,19 @@ internal static class Program
     [
         new()
         {
-            Pattern =
-                "/\\bepic\\b|\\bunreal\\b|\\btilted\\b|\\bfortnite\\b|sween|\\bswinny\\b|\\bfort\\b|\\bnite\\b|jenkin|\\bjames\\b|\\beric\\b|\\bswussy\\b|\\btim\\b|\\btimato\\b|\\bfirtnite\\b/ig",
-            Emote = "<:sweeney:1121233335922999363>",
+            Pattern = new Regex(@"\bepic\b|\bunreal\b|\btilted\b|\bfortnite\b|sween|\bswinny\b|\bfort\b|\bnite\b|jenkin|\bjames\b|\beric\b|\bswussy\b|\btim\b|\btimato\b|\bfirtnite\b", RegexOptions.IgnoreCase),
+            Emote = "",
             CustomEmoji = true
         },
         new()
         {
-            Pattern = "/\\bblazing\\b|\\bblazing fast\\b|\\bmemory safe\\b|\\bblazingly fast\\b/ig",
+            Pattern = new Regex(@"\bblazing\b|\bblazing fast\b|\bmemory safe\b|\bblazingly fast\b", RegexOptions.IgnoreCase),
             Emote = ":rocket:",
             CustomEmoji = false
         }
     ];
 
-    private static readonly Activity Activity = new () {
+    private static readonly Structs.Activity Activity = new () {
         Text = "Epic v Apple",
         Type = ActivityType.Competing
     };
@@ -119,9 +119,9 @@ internal static class Program
 
         foreach (var _ in Patterns)
         {
-            Regex regex = new Regex(_.Pattern);
+            Regex regex = _.Pattern;
             bool matched = false;
-
+            Console.WriteLine(regex.ToString());
             if (regex.IsMatch(arg.Content))
             {
                 Console.WriteLine($"RegEx: Matched \"{arg.Content}\" with {_.Pattern}");
