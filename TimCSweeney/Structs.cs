@@ -12,6 +12,14 @@ public static class Structs
         public bool CustomEmoji { get; init; }
     }
 
+    public struct CVExpression
+    {
+        public string Filename { get; init; }
+        public string Emote { get; init; }
+        public bool CustomEmoji { get; init; }
+        public double ConfidenceThreshold { get; init; }
+    }
+    
     public struct Activity
     {
         public ActivityType Type { get; init; }
